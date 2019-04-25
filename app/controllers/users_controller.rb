@@ -1,23 +1,23 @@
-class UsersController < ApplicationController
+class AuthController < ApplicationController
   skip_before_action :authorized, only: [:create]
-
-  def profile
-    render json: { user: UserSerializer.new(current_user) }, status: :accepted
-  end
-
-   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      @token = encode_token(user_id: @user.id, user_email: @user.email)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+ 
+  def create
+    @user = User.find_by(email: user_login_params[:email])
+    
+    if @user && @user.authenticate(user_login_params[:password])
+      # encode token comes from ApplicationController
+      token = encode_token({ user_id: @user.id, user_email: @user.email, first_name: @user.first_name, last_name: @user.last_name})
+      puts token
+      render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
     else
-      render json: { error: 'failed to create user' }, status: :not_acceptable
+      render json: { message: 'Invalid username or password' }, status: :unauthorized
     end
   end
  
   private
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :password, :email)
+ 
+  def user_login_params
+    params.require(:user).permit(:email, :password)
   end
 
 end

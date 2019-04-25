@@ -3,9 +3,8 @@ class AuthController < ApplicationController
  
   def create
     @user = User.find_by(email: user_login_params[:email])
-    
     if @user && @user.authenticate(user_login_params[:password])
-      token = encode_token({ user_id: @user.id, user_email: @user.email })
+      token = encode_token({ user_id: @user.id, email: @user.email, first_name: @user.first_name, last_name: @user.last_name })
       render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
     else
       render json: { message: 'Invalid username or password' }, status: :unauthorized

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  website: MyString
+  distance: 1.5
+  veg_level_description: MyString
+  string: MyString
+  long_description: MyString
+  address1: MyString
+  city: MyString
+  postal_code: MyString
+  country: MyString
+  neighborhood: MyString
+  price_range: MyString
+  categories: MyString
+  cuisines: MyString
+  phone: MyString
+  short_description: MyString
+
+two:
+  website: MyString
+  distance: 1.5
+  veg_level_description: MyString
+  string: MyString
+  long_description: MyString
+  address1: MyString
+  city: MyString
+  postal_code: MyString
+  country: MyString
+  neighborhood: MyString
+  price_range: MyString
+  categories: MyString
+  cuisines: MyString
+  phone: MyString
+  short_description: MyString
