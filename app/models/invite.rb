@@ -1,3 +1,3 @@
 class Invite < ApplicationRecord
-  has_many :groups
+  belongs_to :groups
 end
