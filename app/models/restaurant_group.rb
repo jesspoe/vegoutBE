@@ -1,4 +1,4 @@
 class RestaurantGroup < ApplicationRecord
-  belongs_to :restaurants
-  belongs_to :groups
+  belongs_to :restaurant
+  belongs_to :group
 end

@@ -3,5 +3,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   
   has_many :user_groups
-  has_many :groups, through: :user_group
+  has_many :groups, through: :user_groups
 end
