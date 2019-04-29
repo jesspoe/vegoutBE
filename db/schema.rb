@@ -38,17 +38,13 @@ ActiveRecord::Schema.define(version: 2019_04_27_002954) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "website"
-    t.float "distance"
     t.string "veg_level_description"
-    t.string "string"
-    t.string "long_description"
     t.string "address1"
     t.string "city"
     t.string "postal_code"
-    t.string "country"
+    t.string "region"
     t.string "neighborhood"
     t.string "price_range"
-    t.string "categories"
     t.string "cuisines"
     t.string "phone"
     t.string "short_description"

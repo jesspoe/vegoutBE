@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  skip_before_action :authorized
+  skip_before_action :authorized, only: [:index]
 
   def index 
      response = HTTParty.get('https://www.vegguide.org/search/by-lat-long/47.661436099999996,-122.34487650000001/filter/category_id=1;veg_level=2;/?limit=15')

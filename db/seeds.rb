@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+Group.create(name: "Ladies Night", description: "Going out for my birthday!")
+Group.create(name: "Halloween", description: "Let's eat before we get spooked!")
+Group.create(name: "Josh's birthday", description: "He really loves sushi.")
+
