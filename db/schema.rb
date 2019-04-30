@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_04_27_002954) do
   end
 
   create_table "restaurants", force: :cascade do |t|
+    t.string "name"
     t.string "website"
     t.string "veg_level_description"
     t.string "address1"
