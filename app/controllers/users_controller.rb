@@ -7,7 +7,13 @@ class UsersController < ApplicationController
  
   def create
     @user = User.create(user_params)
-    if @user.valid?
+    
+    if @user.valid? && invited? != nil 
+      @invite = Invite.find_by(email: @user.email)
+      @usergroup = UserGroup.create(group_id: @invite.group_id, user_id: @user.id)
+      @token = encode_token({ user_id: @user.id })
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    elsif @user.valid?
       @token = encode_token({ user_id: @user.id })
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
@@ -17,6 +23,10 @@ class UsersController < ApplicationController
  
   private
  
+  def invited?
+    @invited = Invite.find_by(email: @user.email)
+  end 
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
   end

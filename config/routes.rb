@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post '/search', to: 'restaurants#search'
   post '/initial', to: 'restaurants#initial'
   get '/profile', to: 'users#profile'
+  post '/addUserGroup', to: 'groups#addUserGroup'
 
 end
