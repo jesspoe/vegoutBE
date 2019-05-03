@@ -29,6 +29,8 @@ end
 
   def destroy
     Group.destroy(params[:id])
+    UserGroup.destroy(params[:group_id])
+    Invite.destroy(params[:group_id])
     render json: @groups
   end
 
