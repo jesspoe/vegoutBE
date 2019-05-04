@@ -1,5 +1,5 @@
 require_relative 'boot'
-
+require 'net/http'
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -16,6 +16,8 @@ require "rails/test_unit/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+Dotenv::Railtie.load 
 
 module VegoutBE
   class Application < Rails::Application
