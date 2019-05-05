@@ -14,7 +14,8 @@ class VotesController < ApplicationController
     @counts.each do |name, count| 
       total += count
     end 
-    render json: {counts: @counts,  total: total}
+    percents= @counts.transform_values {|v| ((v.to_f / total.to_f) * 100) }  
+    render json: {counts: @counts,  total: total, percents: percents}
   end 
 
 
