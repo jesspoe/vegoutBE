@@ -7,8 +7,7 @@ class InvitesController < ApplicationController
   end 
 
   def create 
-    @invite = Invite.new(invite_params)
-    @invite.save
+    @invite = Invite.find_or_create_by(invite_params)
     render json: @invite
   end 
 

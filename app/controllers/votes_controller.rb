@@ -6,6 +6,17 @@ class VotesController < ApplicationController
     render json: @votes 
   end 
 
+  def getVotes
+    total = 0
+    @votes = Vote.where(:group_id => params[:group_id])
+    @counts = @votes.each_with_object(Hash.new(0)) { |voteObj,counts| counts[voteObj.rest_name] += 1 }
+    @counts.each do |name, count| 
+      total += count
+    end 
+    percents= @counts.transform_values {|v| ((v.to_f / total.to_f) * 100) }  
+    render json: {counts: @counts,  total: total, percents: percents}
+  end 
+
   def create 
     total = 0
     @vote = Vote.create(vote_params)

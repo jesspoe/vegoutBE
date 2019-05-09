@@ -12,7 +12,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :price_range
       t.string :cuisines
       t.string :phone
-      t.string :short_description
+      t.string :long_description
 
       t.timestamps
     end

@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
    @found = User.find_by(email: params[:email])
   if @found != nil 
     @group = Group.find_by(id: params[:group_id])
-    @usergroup = UserGroup.create(group_id: @group.id, user_id: @found.id)
+    @usergroup = UserGroup.find_or_create_by(group_id: @group.id, user_id: @found.id)
     render json: {group: @group, usergroup: @usergroup}
   else  
     UserMailer.welcome_email(@invite).deliver_now

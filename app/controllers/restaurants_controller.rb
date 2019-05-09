@@ -29,15 +29,13 @@ class RestaurantsController < ApplicationController
   end 
 
 def create 
-  @restaurant = Restaurant.new(restaurant_params)
-  @restaurant.save
-  @restaurantgroup = RestaurantGroup.create(group_id: params[:group_id], restaurant_id: @restaurant.id )
+  @restaurant = Restaurant.find_or_create_by(restaurant_params)
+  @restaurantgroup = RestaurantGroup.find_or_create_by(group_id: params[:group_id], restaurant_id: @restaurant.id )
   render json: {restaurant: @restaurant, restaurantgroup: @restaurantgroup}
 end 
 
-
 def restaurant_params
-  params.require(:restaurant).permit(:name, :website, :veg_level_description, :address1, :city, :postal_code, :region, :neighborhood, :price_range, :cuisines, :phone, :short_description)
+  params.require(:restaurant).permit(:name, :website, :veg_level_description, :address1, :city, :postal_code, :region, :neighborhood, :price_range, :cuisines, :phone, :long_description)
 end
   
 end

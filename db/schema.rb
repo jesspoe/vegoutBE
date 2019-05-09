@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_194926) do
     t.string "price_range"
     t.string "cuisines"
     t.string "phone"
-    t.string "short_description"
+    t.string "long_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

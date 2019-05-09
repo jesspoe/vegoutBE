@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   post '/initial', to: 'restaurants#initial'
   get '/profile', to: 'users#profile'
   post '/addUserGroup', to: 'groups#addUserGroup'
+  post '/getVotes', to: 'votes#getVotes'
 
 end
