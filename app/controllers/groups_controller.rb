@@ -14,7 +14,6 @@ class GroupsController < ApplicationController
   end 
 
   def addUserGroup
-    byebug
    @invite = Invite.find_or_create_by(group_id: params[:group_id], email: params[:email])
    @found = User.find_by(email: params[:email])
   if @found != nil 
