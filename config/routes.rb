@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post '/addUserGroup', to: 'groups#addUserGroup'
   post '/getVotes', to: 'votes#getVotes'
 
+  get 'location/:loc', to: 'location#location'
 end
