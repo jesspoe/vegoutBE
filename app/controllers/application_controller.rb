@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  require 'net/http'
   before_action :authorized
  
   def encode_token(payload)
